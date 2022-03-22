@@ -1,0 +1,75 @@
+<div *ngIf="student">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <a class="btn btn-primary" (click)="backToStudents()">Back</a>
+            </div>
+            <div class="col-sm-9">
+                <h1>Student Details</h1>
+            </div>
+                        
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div *ngIf="student">
+    <form [formGroup]="studentForm" (ngSubmit)="updateStudent()">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Student ID</th>
+                    <td>{{student.id}}</td>
+                </tr>
+                <tr>
+                    <th>Student Name</th>
+                    <td *ngIf="!isUpdate" >{{student.name}}</td>
+                    <td *ngIf="isUpdate">
+                        <input type="text" class="form-control" formControlName="stu_name" value="{{student.name}}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td *ngIf="!isUpdate">{{student.age}}</td>
+                    <td *ngIf="isUpdate">
+                        <input type="number" class="form-control" formControlName="stu_age" value="{{student.age}}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Standard</th>
+                    <td *ngIf="!isUpdate">{{student.standard}}</td>
+                    <td *ngIf="isUpdate">
+                        <select class="form-control" formControlName="stu_std">
+                            <option *ngFor = "let standard of standards" 
+                            value="{{standard}}">{{standard}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Grade</th>
+                    <td *ngIf="!isUpdate">{{student.grade}}</td>
+                    <td *ngIf="isUpdate">
+                        <select class="form-control" formControlName="stu_grade">
+                            <option *ngFor = "let grade of grades" 
+                            value="{{grade}}">{{grade}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mobile</th>
+                    <td *ngIf="!isUpdate">{{student.mobile}}</td>
+                    <td *ngIf="isUpdate">
+                        <input type="number" class="form-control" formControlName="stu_mobile" value="{{student.mobile}}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="formFooter text-center">
+            <button class="btn btn-primary" (click)="switch()" *ngIf="!isUpdate">Edit</button>&nbsp;
+            <button class="btn btn-primary" *ngIf="isUpdate" type="submit">Update</button>&nbsp;
+            <button class="btn btn-primary" (click)="switch()" *ngIf="isUpdate">Cancel</button>&nbsp;
+            <button class="btn btn-danger" (click)="deleteStudent(student.id)" *ngIf="!isUpdate">Delete</button>
+        </div>
+    </form>
+</div>

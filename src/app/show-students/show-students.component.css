@@ -1,0 +1,14 @@
+.card{
+    padding: 10px;
+    margin: 10px;
+}
+
+#heading{
+    margin-left: 180px;
+    padding: 20px;
+}
+
+#backBtn{
+    margin-left: 50px;
+    margin-top: 40px;
+}

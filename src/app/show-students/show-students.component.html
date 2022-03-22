@@ -1,0 +1,28 @@
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <a class="btn btn-primary" id="backBtn" (click)="backToHome()">Back</a>
+            </div>
+            <div class="col-sm-9">
+                <h1 id="heading">All Students</h1>
+            </div>
+                        
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6" *ngFor="let stu of students">
+			<div class="card text-white text-center bg-primary mb-3" style="width: auto;" >
+				<div class="card-header">{{stu.name}}</div>
+				<div class="card-body">
+					<p class="card-text">{{stu.standard}}</p>
+					<a class="btn btn-success" (click)="studentDetails(stu.id)">Show Details</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

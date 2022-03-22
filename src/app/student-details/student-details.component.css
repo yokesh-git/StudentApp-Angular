@@ -1,0 +1,23 @@
+table{
+    margin: auto;
+    width: 50%;
+}
+table th {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+table td {
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+h1{
+    margin-left: 100px;
+    padding: 20px;
+}
+
+a{
+    margin-left: 50px;
+    margin-top: 40px;
+}
