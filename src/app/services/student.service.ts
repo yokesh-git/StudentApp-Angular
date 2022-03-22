@@ -15,7 +15,7 @@ export class StudentService {
   ) { }
 
   createStudent(student_details: Student){
-    return this.firestore.collection('students').add(student_details);
+    return this.firestore.collection(this.dbStudent).add(student_details);
   }
 
   getAllStudents(){

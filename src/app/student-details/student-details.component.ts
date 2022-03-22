@@ -73,7 +73,7 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   updateStudent(){
-    //console.log("Update Method");
+
     if(this.studentForm.valid){
       var student_details = {
         name: this.studentForm.get('stu_name').value,

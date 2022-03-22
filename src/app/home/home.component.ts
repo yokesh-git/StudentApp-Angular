@@ -14,7 +14,6 @@ import { Student } from 'src/app/models/student.model'
 export class HomeComponent implements OnInit {
 
   studentForm: FormGroup;
-  error: boolean=false;
   selectedGrade: string;
   selectedStandard: string;
 
@@ -52,17 +51,10 @@ export class HomeComponent implements OnInit {
 
       this.studentService.createStudent(student_details);
       this.studentForm.reset();
-      
     }
-    else{
-      this.error = true;
-    }
-    
-    
   }
 
   showStudents(){
-    console.log("Show page");
     this.route.navigate(['/show-students']);
   }
 
