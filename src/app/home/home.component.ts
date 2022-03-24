@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       stu_age: ['',[Validators.required, Validators.min(1), Validators.max(20)]],
       stu_std: ['',[Validators.required]],
       stu_grade : ['',[Validators.required]],
-      stu_mobile: ['',[Validators.required]]
+      stu_mobile: ['',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }
 

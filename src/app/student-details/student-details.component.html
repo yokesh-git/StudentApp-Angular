@@ -25,54 +25,87 @@
                     <th>Student Name</th>
                     <td *ngIf="!isUpdate" >{{student.name}}</td>
                     <td *ngIf="isUpdate">
-                        <input type="text" class="form-control" formControlName="stu_name" value="{{student.name}}">
-                        <span class="text-danger" *ngIf="studentForm.get('stu_name').hasError('required') && studentForm.get('stu_name').dirty">This field is required</span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Student Name</mat-label>
+                            <input matInput formControlName="stu_name" type="text" placeholder="Student Name" autocomplete="off" />
+                            <mat-error>
+                                You must enter the student name
+                            </mat-error>
+                        </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <th>Age</th>
                     <td *ngIf="!isUpdate">{{student.age}}</td>
                     <td *ngIf="isUpdate">
-                        <input type="number" class="form-control" formControlName="stu_age" value="{{student.age}}">
-                        <span class="text-danger" *ngIf="studentForm.get('stu_age').hasError('required') && studentForm.get('stu_age').dirty">This field is required</span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Student Age</mat-label>
+                            <input matInput formControlName="stu_age" type="number"  min="1" max="20" placeholder="Student Age" autocomplete="off" />
+                            <mat-error>
+                                You must enter the student age between 1 and 20
+                            </mat-error>
+                        </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <th>Standard</th>
                     <td *ngIf="!isUpdate">{{student.standard}}</td>
                     <td *ngIf="isUpdate">
-                        <select class="form-control" formControlName="stu_std">
-                            <option *ngFor = "let standard of standards" 
-                            value="{{standard}}">{{standard}}</option>
-                        </select>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Standard</mat-label>
+                            <mat-select formControlName="stu_std">
+                                <mat-option *ngFor="let standard of standards" value="{{standard}}">{{standard}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                You must select the standard
+                            </mat-error>
+                        </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <th>Grade</th>
                     <td *ngIf="!isUpdate">{{student.grade}}</td>
                     <td *ngIf="isUpdate">
-                        <select class="form-control" formControlName="stu_grade">
-                            <option *ngFor = "let grade of grades" 
-                            value="{{grade}}">{{grade}}</option>
-                        </select>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Grade</mat-label>
+                            <mat-select formControlName="stu_grade">
+                                <mat-option *ngFor="let grade of grades" value="{{grade}}">{{grade}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                You must select the grade
+                            </mat-error>
+                        </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <th>Mobile</th>
                     <td *ngIf="!isUpdate">{{student.mobile}}</td>
                     <td *ngIf="isUpdate">
-                        <input type="number" class="form-control" formControlName="stu_mobile" value="{{student.mobile}}">
-                        <span class="text-danger" *ngIf="studentForm.get('stu_mobile').hasError('required') && studentForm.get('stu_mobile').dirty">This field is required</span>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Student Mobile</mat-label>
+                            <input matInput formControlName="stu_mobile" type="number" placeholder="Student Mobile" autocomplete="off" />
+                            <mat-error>
+                                Please check the mobile number
+                            </mat-error>
+                        </mat-form-field>
                     </td>
                 </tr>
             </tbody>
         </table>
         <hr>
         <div class="formFooter text-center">
-            <button class="btn btn-primary" (click)="switch()" *ngIf="!isUpdate">Edit</button>&nbsp;
-            <button class="btn btn-primary" *ngIf="isUpdate" type="submit">Update</button>&nbsp;
-            <button class="btn btn-primary" (click)="switch()" *ngIf="isUpdate">Cancel</button>&nbsp;
-            <button class="btn btn-danger" (click)="deleteStudent(student.id)" *ngIf="!isUpdate">Delete</button>
+            <button mat-raised-button color="primary" (click)="switch()" *ngIf="!isUpdate">
+                Edit
+            </button>&nbsp;
+            <button mat-raised-button color="primary" type="submit" *ngIf="isUpdate">
+                Update
+            </button>&nbsp;
+            <button mat-raised-button color="warn" (click)="switch()" *ngIf="isUpdate">
+                Cancel
+            </button>&nbsp;
+            <button mat-raised-button color="warn" (click)="deleteStudent(student.id)" *ngIf="!isUpdate">
+                Delete
+            </button>
         </div>
     </form>
 </div>

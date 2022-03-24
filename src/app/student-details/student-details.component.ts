@@ -41,10 +41,10 @@ export class StudentDetailsComponent implements OnInit {
 
     this.studentForm = this.fb.group({
       stu_name: ['',[Validators.required]],
-      stu_age: ['',[Validators.required]],
+      stu_age: ['',[Validators.required, Validators.min(1), Validators.max(20)]],
       stu_std: ['',[Validators.required]],
       stu_grade : ['',[Validators.required]],
-      stu_mobile: ['',[Validators.required]]
+      stu_mobile: ['',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     })
   }
   

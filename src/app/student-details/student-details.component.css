@@ -13,11 +13,20 @@ table td {
 }
 
 h1{
-    margin-left: 100px;
+    margin-left: 130px;
     padding: 20px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    
 }
 
 a{
     margin-left: 50px;
     margin-top: 40px;
+}
+
+mat-form-field {
+    width: 100%;
 }
