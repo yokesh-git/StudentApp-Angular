@@ -1,14 +1,25 @@
-.card{
-    padding: 10px;
-    margin: 10px;
-}
-
 #heading{
-    margin-left: 180px;
-    padding: 20px;
+    margin-right: 270px;
+    padding: 10px;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #backBtn{
     margin-left: 50px;
     margin-top: 40px;
+}
+
+mat-card {
+    margin: 10px;
+    background-color: rgba(253, 184, 55, 0.808);
+    height: 100px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
 }

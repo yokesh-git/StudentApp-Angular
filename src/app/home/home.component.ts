@@ -1,6 +1,6 @@
 import { StudentService } from './../services/student.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model'
 
@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
 
     this.studentForm = this.fb.group({
       stu_name: ['',[Validators.required]],
-      stu_age: ['',[Validators.required]],
+      stu_age: ['',[Validators.required, Validators.min(1), Validators.max(20)]],
       stu_std: ['',[Validators.required]],
       stu_grade : ['',[Validators.required]],
-      stu_mobile: ['',[Validators.required, Validators.maxLength(10)]]
+      stu_mobile: ['',[Validators.required]]
     });
   }
 
-  addStudent(){
+  addStudent(ngstudentForm: FormGroupDirective){
 
     if(this.studentForm.valid){
 
@@ -49,13 +49,19 @@ export class HomeComponent implements OnInit {
         mobile: this.studentForm.get('stu_mobile').value
       } as Student;
 
-      this.studentService.createStudent(student_details);
-      this.studentForm.reset();
+      this.studentService.createStudent(student_details).then(result =>{
+        if(result){
+          ngstudentForm.resetForm();
+          this.studentForm.reset();
+        }
+      });
     }
   }
 
   showStudents(){
     this.route.navigate(['/show-students']);
   }
+
+  
 
 }

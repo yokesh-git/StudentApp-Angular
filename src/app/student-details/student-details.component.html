@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div *ngIf="student">
     <div class="container">
         <div class="row">
@@ -6,8 +7,7 @@
             </div>
             <div class="col-sm-9">
                 <h1>Student Details</h1>
-            </div>
-                        
+            </div>          
         </div>
         <hr>
     </div>
@@ -26,6 +26,7 @@
                     <td *ngIf="!isUpdate" >{{student.name}}</td>
                     <td *ngIf="isUpdate">
                         <input type="text" class="form-control" formControlName="stu_name" value="{{student.name}}">
+                        <span class="text-danger" *ngIf="studentForm.get('stu_name').hasError('required') && studentForm.get('stu_name').dirty">This field is required</span>
                     </td>
                 </tr>
                 <tr>
@@ -33,6 +34,7 @@
                     <td *ngIf="!isUpdate">{{student.age}}</td>
                     <td *ngIf="isUpdate">
                         <input type="number" class="form-control" formControlName="stu_age" value="{{student.age}}">
+                        <span class="text-danger" *ngIf="studentForm.get('stu_age').hasError('required') && studentForm.get('stu_age').dirty">This field is required</span>
                     </td>
                 </tr>
                 <tr>
@@ -60,6 +62,7 @@
                     <td *ngIf="!isUpdate">{{student.mobile}}</td>
                     <td *ngIf="isUpdate">
                         <input type="number" class="form-control" formControlName="stu_mobile" value="{{student.mobile}}">
+                        <span class="text-danger" *ngIf="studentForm.get('stu_mobile').hasError('required') && studentForm.get('stu_mobile').dirty">This field is required</span>
                     </td>
                 </tr>
             </tbody>
