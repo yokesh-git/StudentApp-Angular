@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { StudentService } from './../services/student.service';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
   studentForm: FormGroup;
   selectedGrade: string;
   selectedStandard: string;
+  isLogin: boolean = false;
+  error: string;
+  isError: boolean = false;
 
   standards: string[] = ['1st Standard','2nd Standard'];
   grades: string[] = ['Grade A', 'Grade B'];
@@ -23,7 +27,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -60,6 +65,20 @@ export class HomeComponent implements OnInit {
 
   showStudents(){
     this.route.navigate(['/show-students']);
+  }
+
+  login(){
+    this.authService.signInWithGoogle().then(result=>{
+      if(result){
+        this.isLogin = true;
+      }
+      else{
+        this.isError = true;
+        this.error = "Login Failed";
+        this.isLogin = false;
+      }
+    })
+    
   }
 
   
