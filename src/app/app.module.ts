@@ -18,9 +18,12 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { LoginComponent } from './login/login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 const routes : Routes = [
-  {path : '', component: HomeComponent},
+  {path: '', component: LoginComponent},
+  {path : 'add-students', component: HomeComponent},
   {path:'show-students', component: ShowStudentsComponent },
   {path:'show-students/:id', component: StudentDetailsComponent}
   ]
@@ -32,7 +35,8 @@ const routes : Routes = [
     HomeComponent,
     ShowStudentsComponent,
     StudentDetailsComponent,
-    NavComponent
+    NavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ const routes : Routes = [
     MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

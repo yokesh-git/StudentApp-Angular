@@ -1,15 +1,10 @@
 <app-nav></app-nav>
-<div class="container" *ngIf="!isLogin">
+<div class="container">
     <div class="row">
         <div *ngIf="isError"class="text-danger">{{error}}</div>
-        <div class="col-xs-12">
-            <button mat-raised-button color="primary" (click)="login()" *ngIf="!isError">
-                Login with Google
-            </button>
-        </div>
     </div>
 </div>
-<div class="container" *ngIf="isLogin">
+<div class="container">
     <div class="row">
         <div class="col-xs-12">
             <header>

@@ -38,7 +38,7 @@ export class ShowStudentsComponent implements OnInit {
   }
 
   backToHome(){
-    this.route.navigate(['']);
+    this.route.navigate(['add-students']);
   }
 
 }

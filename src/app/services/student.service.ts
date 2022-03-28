@@ -1,3 +1,4 @@
+import { SanckbarService } from './sanckbar.service';
 import { Student } from './../Models/student.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,8 @@ export class StudentService {
   dbStudent = 'students';
 
   constructor(
-    private firestore : AngularFirestore
+    private firestore : AngularFirestore,
+    private snackBar: SanckbarService
   ) { }
 
   createStudent(student_details: Student){
@@ -43,7 +45,11 @@ export class StudentService {
     }
 
     updateStudent(studentId:string, student : Student){
-      return this.firestore.doc(`${this.dbStudent}/${studentId}`).update(student);
+      return this.firestore.doc(`${this.dbStudent}/${studentId}`).update(student).then(res=>{
+        this.snackBar.openSnackBar("Update Successful","Dismiss");
+      }).catch(err=>{
+        this.snackBar.openSnackBar("Update Failed","Dismiss")
+      });
     }
 
 

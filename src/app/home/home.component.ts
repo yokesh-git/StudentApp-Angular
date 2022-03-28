@@ -1,9 +1,10 @@
-import { AuthService } from './../services/auth.service';
 import { StudentService } from './../services/student.service';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model'
+import { SanckbarService } from '../services/sanckbar.service';
+
 
 
 @Component({
@@ -24,11 +25,12 @@ export class HomeComponent implements OnInit {
   standards: string[] = ['1st Standard','2nd Standard'];
   grades: string[] = ['Grade A', 'Grade B'];
 
+  
   constructor(
     private fb: FormBuilder,
     private route: Router,
     private studentService: StudentService,
-    private authService: AuthService
+    private snackBar: SanckbarService
     ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class HomeComponent implements OnInit {
 
       this.studentService.createStudent(student_details).then(result =>{
         if(result){
+          this.snackBar.openSnackBar("Successfully Added","Dismiss");
           ngstudentForm.resetForm();
           this.studentForm.reset();
         }
@@ -66,21 +69,5 @@ export class HomeComponent implements OnInit {
   showStudents(){
     this.route.navigate(['/show-students']);
   }
-
-  login(){
-    this.authService.signInWithGoogle().then(result=>{
-      if(result){
-        this.isLogin = true;
-      }
-      else{
-        this.isError = true;
-        this.error = "Login Failed";
-        this.isLogin = false;
-      }
-    })
-    
-  }
-
-  
 
 }

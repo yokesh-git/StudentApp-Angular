@@ -3,6 +3,7 @@ import { Student } from './../Models/student.model';
 import { StudentService } from './../services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SanckbarService } from '../services/sanckbar.service';
 
 @Component({
   selector: 'app-student-details',
@@ -23,7 +24,8 @@ export class StudentDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private studentService: StudentService,
     private route: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: SanckbarService
   ) { }
 
   ngOnInit(): void {
@@ -85,6 +87,7 @@ export class StudentDetailsComponent implements OnInit {
 
       this.studentService.updateStudent(this.studentId,student_details);
       this.isUpdate = false;
+      
     }
   }
 
